@@ -34,4 +34,4 @@ Epoch=6, train loss=0.0666, test loss=0.0599
 ...
 ```
 
-![mnist experimental results](./assets/fig.png)
+![mnist experimental results](./assets/mnist.png)
