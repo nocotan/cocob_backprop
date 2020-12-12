@@ -17,7 +17,7 @@ else:
     device = torch.device("cpu")
 
 datasets = ["mnist", "cifar10"]
-optims = ["adam", "cocob_backprop"]
+optims = ["adam", "rmsprop", "cocob_backprop"]
 
 
 class MLP(nn.Module):
@@ -26,13 +26,11 @@ class MLP(nn.Module):
 
         self.model = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(input_features, 32),
-            nn.Dropout(0.25),
+            nn.Linear(input_features, 128),
             nn.ReLU(),
-            nn.Linear(32, 32),
-            nn.Dropout(0.25),
+            nn.Linear(128, 128),
             nn.ReLU(),
-            nn.Linear(32, n_classes),
+            nn.Linear(128, n_classes),
             nn.LogSoftmax(dim=1),
         )
 
@@ -73,7 +71,11 @@ def main():
     if args.optimizer == "cocob_backprop":
         optimizer = COCOBBackprop(net.parameters())
     elif args.optimizer == "adam":
-        optimizer = torch.optim.Adam(net.parameters(), lr=1e-3)
+        optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
+    elif args.optimizer == "rmsprop":
+        optimizer = torch.optim.RMSprop(net.parameters(), lr=0.0005)
+    else:
+        raise NotImplementedError
 
     train_losses = []
     test_losses = []
