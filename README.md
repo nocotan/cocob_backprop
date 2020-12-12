@@ -31,3 +31,5 @@ Epoch=5, train loss=0.0742, test loss=0.0679
 Epoch=6, train loss=0.0666, test loss=0.0599
 ...
 ```
+
+![](./assets/fig.png)
