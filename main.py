@@ -26,11 +26,13 @@ class MLP(nn.Module):
 
         self.model = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(input_features, 128),
+            nn.Linear(input_features, 256),
+            nn.Dropout(0.25),
             nn.ReLU(),
-            nn.Linear(128, 128),
+            nn.Linear(256, 256),
+            nn.Dropout(0.25),
             nn.ReLU(),
-            nn.Linear(128, n_classes),
+            nn.Linear(256, n_classes),
             nn.LogSoftmax(dim=1),
         )
 
@@ -43,7 +45,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=datasets, default="mnist")
     parser.add_argument("--optimizer", choices=optims, default="adam")
-    parser.add_argument("--n_epochs", type=int, default=50)
+    parser.add_argument("--n_epochs", type=int, default=30)
     parser.add_argument("--batch_size", type=int, default=100)
     parser.add_argument("--seed", type=int, default=128)
     args = parser.parse_args()
@@ -71,7 +73,7 @@ def main():
     if args.optimizer == "cocob_backprop":
         optimizer = COCOBBackprop(net.parameters())
     elif args.optimizer == "adam":
-        optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
+        optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
     elif args.optimizer == "rmsprop":
         optimizer = torch.optim.RMSprop(net.parameters(), lr=0.0005)
     else:
@@ -105,7 +107,7 @@ def train(net, optimizer, train_loader):
 
         epoch_loss += loss.detach().item()
 
-    return epoch_loss
+    return epoch_loss / len(train_loader)
 
 
 def test(net, test_loader):
@@ -117,7 +119,7 @@ def test(net, test_loader):
         loss = F.nll_loss(outputs, targets)
         test_loss += loss.detach().item()
 
-    return test_loss
+    return test_loss / len(test_loader)
 
 
 def save_csv(args, train_losses, test_losses):
