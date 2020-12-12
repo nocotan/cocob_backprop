@@ -1,5 +1,7 @@
 #  COntinuous COin Betting (COCOB) Backprop
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/training-deep-networks-without-learning-rates/stochastic-optimization-on-mnist)](https://paperswithcode.com/sota/stochastic-optimization-on-mnist?p=training-deep-networks-without-learning-rates)
+
 Unofficial pytorch implementation of COCOB Backprop.
 
 ## Training deep networks without learning rates through coin betting
@@ -31,3 +33,5 @@ Epoch=5, train loss=0.0742, test loss=0.0679
 Epoch=6, train loss=0.0666, test loss=0.0599
 ...
 ```
+
+![](./assets/fig.png)
