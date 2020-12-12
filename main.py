@@ -17,7 +17,7 @@ else:
     device = torch.device("cpu")
 
 datasets = ["mnist", "cifar10"]
-optims = ["adam", "rmsprop", "cocob_backprop"]
+optims = ["adam", "amsgrad", "rmsprop", "cocob_backprop"]
 
 
 class MLP(nn.Module):
@@ -74,6 +74,8 @@ def main():
         optimizer = COCOBBackprop(net.parameters())
     elif args.optimizer == "adam":
         optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
+    elif args.optimizer == "amsgrad":
+        optimizer = torch.optim.Adam(net.parameters(), lr=0.001, amsgrad=True)
     elif args.optimizer == "rmsprop":
         optimizer = torch.optim.RMSprop(net.parameters(), lr=0.0005)
     else:
