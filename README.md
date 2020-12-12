@@ -1,4 +1,4 @@
-# COCOB Backprop
+#  COntinuous COin Betting (COCOB) Backprop
 
 Unofficial pytorch implementation of COCOB Backprop.
 
