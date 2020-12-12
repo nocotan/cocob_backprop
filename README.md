@@ -17,3 +17,9 @@ on a coin and propose a learning-rate-free optimal algorithm for this scenario.
 Theoretical convergence is proven for convex and quasi-convex functions and
 empirical evidence shows the advantage of our algorithm over popular stochastic
 gradient algorithms.
+
+## Usage
+
+```bash
+$ python main.py --optimizer=cocob_backprop --n_epochs=30
+```
