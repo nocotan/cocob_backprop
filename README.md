@@ -20,6 +20,14 @@ gradient algorithms.
 
 ## Usage
 
-```bash
+```
 $ python main.py --optimizer=cocob_backprop --n_epochs=30
+Epoch=0, train loss=0.3297, test loss=0.1180
+Epoch=1, train loss=0.1448, test loss=0.0934
+Epoch=2, train loss=0.1122, test loss=0.0762
+Epoch=3, train loss=0.0937, test loss=0.0680
+Epoch=4, train loss=0.0841, test loss=0.0653
+Epoch=5, train loss=0.0742, test loss=0.0679
+Epoch=6, train loss=0.0666, test loss=0.0599
+...
 ```
