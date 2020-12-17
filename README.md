@@ -1,4 +1,4 @@
-#  COntinuous COin Betting (COCOB) Backprop
+#  COntinuous COin Betting Backprop (COCOB)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/training-deep-networks-without-learning-rates/stochastic-optimization-on-mnist)](https://paperswithcode.com/sota/stochastic-optimization-on-mnist?p=training-deep-networks-without-learning-rates)
 
